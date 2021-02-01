@@ -18,8 +18,8 @@ import './index.css';
 // Relative imports
 import withRoot from '../utils/withRoot';
 import styled from '../utils/styled';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from './Header';
+import Footer from './Footer';
 import { loginUser, logoutUser } from '../utils/identityActions';
 
 // Create Apollo Client
@@ -59,7 +59,7 @@ const Wrapper = styled('div')(theme => ({
   padding: `0 ${theme.spacing.unit * 2}px`,
 }));
 
-class App extends Component {
+class Layout extends Component {
   constructor(props) {
     super(props);
     // Initialize NetlifyIdentity
@@ -77,7 +77,7 @@ class App extends Component {
             ]}
           />
           <Header data={{ site }} />
-          <Main>{children()}</Main>
+          <Main>{children}</Main>
           <Footer data={{ site }} />
         </Wrapper>
       </ApolloProvider>
@@ -87,7 +87,7 @@ class App extends Component {
 App.propTypes = {
   children: PropTypes.func,
 };
-export default withRoot(App);
+export default withRoot(Layout);
 
 export const query = graphql`
   query GetSiteMetadata {

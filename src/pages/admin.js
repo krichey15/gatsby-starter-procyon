@@ -6,6 +6,7 @@ import { Typography, Grid } from 'material-ui';
 import styled from '../utils/styled';
 import Section from '../components/Section';
 import Button from '../components/Button';
+import Layout from '../components/layout';
 
 const content = `
 De commodo exquisitaque. Ut magna labore nam litteris, nulla se cupidatat de
@@ -18,20 +19,22 @@ illum cillum minim consequat ea legam te iis fore consequat.
 class Admin extends Component {
   render() {
     return (
-      <Section>
-        <Grid item xs={12} sm={8}>
-          <Helmet title="Admin" />
-          <Typography variant="display1">Admin</Typography>
-          <Button variant="stroked" onClick={this.handleLogin}>
-            Login
-          </Button>
-          <Typography
-            component={Markdown}
-            source={content}
-            escapeHtml={false}
-          />
-        </Grid>
-      </Section>
+      <Layout>
+        <Section>
+          <Grid item xs={12} sm={8}>
+            <Helmet title="Admin" />
+            <Typography variant="display1">Admin</Typography>
+            <Button variant="stroked" onClick={this.handleLogin}>
+              Login
+            </Button>
+            <Typography
+              component={Markdown}
+              source={content}
+              escapeHtml={false}
+            />
+          </Grid>
+        </Section>
+      </Layout>
     );
   }
 }

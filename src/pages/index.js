@@ -7,6 +7,7 @@ import gql from 'graphql-tag';
 import styled from '../utils/styled';
 import Button from '../components/Button';
 import Section from '../components/Section';
+import Layout from '../components/layout';
 
 const content = `
 De commodo exquisitaque. Ut magna labore nam litteris, nulla se cupidatat de
@@ -18,16 +19,18 @@ illum cillum minim consequat ea legam te iis fore consequat.
 
 const Home = ({ data }) => {
   return (
-    <Section>
-      <Grid item xs={12} sm={8}>
-        <Helmet title="Home" />
-        <Typography variant="display1">Home</Typography>
-        <Typography component={Markdown} source={content} />
-        <Button component={Link} to="/about" variant="stroked">
-          About Us
-        </Button>
-      </Grid>
-    </Section>
+    <Layout>
+      <Section>
+        <Grid item xs={12} sm={8}>
+          <Helmet title="Home" />
+          <Typography variant="display1">Home</Typography>
+          <Typography component={Markdown} source={content} />
+          <Button component={Link} to="/about" variant="stroked">
+            About Us
+          </Button>
+        </Grid>
+      </Section>
+    </Layout>
   );
 };
 export default Home;

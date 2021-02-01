@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import { Typography, Grid } from 'material-ui';
 import styled from '../utils/styled';
 import Section from '../components/Section';
+import Layout from '../components/Layout';
 
 const content = `
 De commodo exquisitaque. Ut magna labore nam litteris, nulla se cupidatat de
@@ -16,13 +17,15 @@ illum cillum minim consequat ea legam te iis fore consequat.
 
 const About = ({ data }) => {
   return (
-    <Section>
-      <Grid item xs={12} sm={8}>
-        <Helmet title="About" />
-        <Typography variant="display1">About</Typography>
-        <Typography component={Markdown} source={content} escapeHtml={false} />
-      </Grid>
-    </Section>
+    <Layout>
+      <Section>
+        <Grid item xs={12} sm={8}>
+          <Helmet title="About" />
+          <Typography variant="display1">About</Typography>
+          <Typography component={Markdown} source={content} escapeHtml={false} />
+        </Grid>
+      </Section>
+    </Layout>
   );
 };
 export default About;

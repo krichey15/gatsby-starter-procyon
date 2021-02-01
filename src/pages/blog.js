@@ -5,6 +5,7 @@ import Markdown from 'react-markdown';
 import styled from '../utils/styled';
 import { Typography, Grid } from 'material-ui';
 import Section from '../components/Section';
+import Layout from '../components/layout';
 
 const List = styled('ul')(theme => ({
   padding: 0,
@@ -41,47 +42,49 @@ const Thumbnail = styled('img')(theme => ({
 
 const IndexPage = ({ data }) => {
   return (
-    <Section>
-      <Grid item xs={12} sm={8}>
-        <Helmet title="Blog" />
-        <Typography variant="display1">Blog</Typography>
-        <Typography>
-          Officia e ipsum. Ut quis expetendis exquisitaque an eiusmod ubi nisi,
-          ex ab ipsum enim quis, quo quamquam a ullamco. Ab aliquip
-          comprehenderit, occaecat quae fugiat excepteur export.
-        </Typography>
-        <List>
-          {data.allPost.edges.map(post => (
-            <ListItem key={post.node.id}>
-              <Link to={`/post/${post.node.slug}`}>
-                <Placeholder>
-                  <Thumbnail
-                    alt={post.node.title}
-                    src={
-                      post.node.coverImage
-                        ? `https://media.graphcms.com/resize=w:100,h:100,fit:crop/${
-                            post.node.coverImage.handle
-                          }`
-                        : 'https://via.placeholder.com/100x100'
-                    }
-                  />
-                </Placeholder>
-              </Link>
-              <div>
-                <PostTitle to={`/post/${post.node.slug}`}>
-                  <Typography variant="title">{post.node.title}</Typography>
-                </PostTitle>
-                <Typography>
-                  Officia e ipsum. Ut quis expetendis exquisitaque an eiusmod
-                  ubi nisi, ex ab ipsum enim quis, quo quamquam a ullamco. Ab
-                  aliquip comprehenderit, occaecat quae fugiat excepteur export.
-                </Typography>
-              </div>
-            </ListItem>
-          ))}
-        </List>
-      </Grid>
-    </Section>
+    <Layout>
+      <Section>
+        <Grid item xs={12} sm={8}>
+          <Helmet title="Blog" />
+          <Typography variant="display1">Blog</Typography>
+          <Typography>
+            Officia e ipsum. Ut quis expetendis exquisitaque an eiusmod ubi nisi,
+            ex ab ipsum enim quis, quo quamquam a ullamco. Ab aliquip
+            comprehenderit, occaecat quae fugiat excepteur export.
+          </Typography>
+          <List>
+            {data.allPost.edges.map(post => (
+              <ListItem key={post.node.id}>
+                <Link to={`/post/${post.node.slug}`}>
+                  <Placeholder>
+                    <Thumbnail
+                      alt={post.node.title}
+                      src={
+                        post.node.coverImage
+                          ? `https://media.graphcms.com/resize=w:100,h:100,fit:crop/${
+                              post.node.coverImage.handle
+                            }`
+                          : 'https://via.placeholder.com/100x100'
+                      }
+                    />
+                  </Placeholder>
+                </Link>
+                <div>
+                  <PostTitle to={`/post/${post.node.slug}`}>
+                    <Typography variant="title">{post.node.title}</Typography>
+                  </PostTitle>
+                  <Typography>
+                    Officia e ipsum. Ut quis expetendis exquisitaque an eiusmod
+                    ubi nisi, ex ab ipsum enim quis, quo quamquam a ullamco. Ab
+                    aliquip comprehenderit, occaecat quae fugiat excepteur export.
+                  </Typography>
+                </div>
+              </ListItem>
+            ))}
+          </List>
+        </Grid>
+      </Section>
+    </Layout>
   );
 };
 export default IndexPage;
